@@ -25,15 +25,14 @@ namespace BulkyWeb.Areas.Admin.Controllers
         {
             return View();
         }
-
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            //if (obj.Name == obj.DisplayOrder.ToString()) 
-            //{
-            //    ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
-            //}
-    
+            if (obj.Name == obj.DisplayOrder.ToString())
+            {
+                ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
+            }
+
             if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Add(obj);
@@ -42,8 +41,8 @@ namespace BulkyWeb.Areas.Admin.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-        }
 
+        }
 
 
         public IActionResult Edit(int? id)

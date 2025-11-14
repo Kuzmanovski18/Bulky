@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Bulky.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20251012075819_AddTablesToDb")]
-    partial class AddTablesToDb
+    [Migration("20251114160403_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -622,9 +622,6 @@ namespace Bulky.DataAccess.Migrations
                     b.Property<string>("City")
                         .HasColumnType("text");
 
-                    b.Property<int?>("ComapnyId")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("CompanyId")
                         .HasColumnType("integer");
 
@@ -641,7 +638,7 @@ namespace Bulky.DataAccess.Migrations
                     b.Property<string>("StreetAddress")
                         .HasColumnType("text");
 
-                    b.HasIndex("ComapnyId");
+                    b.HasIndex("CompanyId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -772,7 +769,7 @@ namespace Bulky.DataAccess.Migrations
                 {
                     b.HasOne("Bulky.Models.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("ComapnyId");
+                        .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
                 });

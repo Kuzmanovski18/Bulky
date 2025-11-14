@@ -619,9 +619,6 @@ namespace Bulky.DataAccess.Migrations
                     b.Property<string>("City")
                         .HasColumnType("text");
 
-                    b.Property<int?>("ComapnyId")
-                        .HasColumnType("integer");
-
                     b.Property<int?>("CompanyId")
                         .HasColumnType("integer");
 
@@ -638,7 +635,7 @@ namespace Bulky.DataAccess.Migrations
                     b.Property<string>("StreetAddress")
                         .HasColumnType("text");
 
-                    b.HasIndex("ComapnyId");
+                    b.HasIndex("CompanyId");
 
                     b.HasDiscriminator().HasValue("ApplicationUser");
                 });
@@ -769,7 +766,7 @@ namespace Bulky.DataAccess.Migrations
                 {
                     b.HasOne("Bulky.Models.Company", "Company")
                         .WithMany()
-                        .HasForeignKey("ComapnyId");
+                        .HasForeignKey("CompanyId");
 
                     b.Navigation("Company");
                 });
